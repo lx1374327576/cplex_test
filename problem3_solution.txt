@@ -1,0 +1,71 @@
+<?xml version = "1.0" encoding="UTF-8" standalone="yes"?>
+<CPLEXSolution version="1.2">
+ <header
+   problemName="problem3.lp"
+   objectiveValue="1217000"
+   solutionTypeValue="1"
+   solutionTypeString="basic"
+   solutionStatusValue="3"
+   solutionStatusString="infeasible"
+   solutionMethodString="dual"
+   primalFeasible="0"
+   dualFeasible="1"
+   simplexIterations="13"
+   writeLevel="1"/>
+ <quality
+   epRHS="9.9999999999999995e-07"
+   epOpt="9.9999999999999995e-07"
+   maxPrimalInfeas="705.00000000000011"
+   maxDualInfeas="0"
+   maxPrimalResidual="6.5654148784233257e-12"
+   maxDualResidual="1.1102230246251565e-16"
+   maxX="400000"
+   maxPi="23.333333333333332"
+   maxSlack="175000"
+   maxRedCost="21.293333333333333"
+   kappa="396.19841269841254"/>
+ <linearConstraints>
+  <constraint name="r1" index="0" status="LL" slack="0" dual="23.333333333333332"/>
+  <constraint name="r2" index="1" status="BS" slack="-60000" dual="-0"/>
+  <constraint name="r3" index="2" status="LL" slack="0" dual="23.333333333333332"/>
+  <constraint name="r4" index="3" status="LL" slack="0" dual="-23.333333333333332"/>
+  <constraint name="r5" index="4" status="LL" slack="0" dual="-23.333333333333332"/>
+  <constraint name="r6" index="5" status="LL" slack="0" dual="23.333333333333332"/>
+  <constraint name="r7" index="6" status="LL" slack="0" dual="9.3333333333333339"/>
+  <constraint name="r8" index="7" status="LL" slack="0" dual="23.333333333333332"/>
+  <constraint name="r9" index="8" status="LL" slack="0" dual="23.333333333333332"/>
+  <constraint name="r10" index="9" status="LL" slack="0" dual="23.333333333333332"/>
+  <constraint name="r11" index="10" status="LL" slack="0" dual="23.333333333333332"/>
+  <constraint name="r12" index="11" status="BS" slack="-86666.666666666672" dual="-0"/>
+  <constraint name="r13" index="12" status="LL" slack="0" dual="23.333333333333332"/>
+  <constraint name="r14" index="13" status="BS" slack="-162000" dual="-0"/>
+  <constraint name="r15" index="14" status="BS" slack="18900" dual="0"/>
+  <constraint name="r16" index="15" status="BS" slack="-175000" dual="-0"/>
+  <constraint name="r17" index="16" status="BS" slack="-705.00000000000011" dual="0"/>
+  <constraint name="r18" index="17" status="LL" slack="0" dual="23.333333333333332"/>
+  <constraint name="r19" index="18" status="LL" slack="0" dual="23.333333333333332"/>
+  <constraint name="r20" index="19" status="LL" slack="0" dual="23.333333333333332"/>
+  <constraint name="r21" index="20" status="LL" slack="0" dual="23.333333333333332"/>
+ </linearConstraints>
+ <variables>
+  <variable name="x1" index="0" status="BS" value="66666.666666666672" reducedCost="0"/>
+  <variable name="x2" index="1" status="BS" value="400000" reducedCost="0"/>
+  <variable name="x3" index="2" status="UL" value="30000" reducedCost="-19.153333333333332"/>
+  <variable name="x4" index="3" status="UL" value="40000" reducedCost="-21.293333333333333"/>
+  <variable name="x5" index="4" status="UL" value="50000" reducedCost="-8.7333333333333325"/>
+  <variable name="x9" index="5" status="BS" value="20000" reducedCost="0"/>
+  <variable name="x10" index="6" status="BS" value="40000" reducedCost="0"/>
+  <variable name="x6" index="7" status="BS" value="25500" reducedCost="0"/>
+  <variable name="x8" index="8" status="BS" value="22500" reducedCost="0"/>
+  <variable name="x14" index="9" status="BS" value="8000" reducedCost="0"/>
+  <variable name="x17" index="10" status="BS" value="14500" reducedCost="0"/>
+  <variable name="x11" index="11" status="BS" value="30000" reducedCost="0"/>
+  <variable name="x7" index="12" status="BS" value="17500" reducedCost="0"/>
+  <variable name="x15" index="13" status="LL" value="0" reducedCost="0"/>
+  <variable name="x18" index="14" status="BS" value="17500" reducedCost="0"/>
+  <variable name="x16" index="15" status="BS" value="15500" reducedCost="0"/>
+  <variable name="x19" index="16" status="BS" value="24500" reducedCost="0"/>
+  <variable name="x12" index="17" status="BS" value="42000" reducedCost="0"/>
+  <variable name="x13" index="18" status="BS" value="6500" reducedCost="0"/>
+ </variables>
+</CPLEXSolution>
