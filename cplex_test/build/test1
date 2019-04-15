@@ -1,0 +1,42 @@
+#include<cstdio>
+using namespace std;
+int p[1000005], a[1000005];
+int count[1000005];
+int main(){
+    int t;
+    scanf("%d",&t);
+    for (int i=1;i<=t;i++){
+    	printf("t%d",t);
+        int n;
+        int min=2000000000;
+        int cmin=2000000000;
+        scanf("%d",&n);
+        for (int j=1;j<=n;j++){
+            scanf("%d",&p[j]);
+            a[p[j]]=j;
+            count[j]=0;
+            if (min<p[j]){
+                count[j]++;
+                if (cmin>p[j]){
+                    count[a[min]]++;
+                }
+            }
+            if (p[j]<min){
+                cmin=min;
+                min=p[i];
+            }else{
+                if (p[j]<cmin){
+                    cmin=p[j];
+                }
+            }
+
+        }
+        int tmp=1;
+        for (int j=2;j<=n;j++){
+            if (count[j]<count[tmp]||count[j]==count[tmp]&&p[j]<p[tmp]){
+                tmp=j;
+            }
+        printf("%d\n",p[tmp]);
+        }
+    }
+}
