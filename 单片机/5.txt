@@ -1,0 +1,45 @@
+#include<REG52.h>
+int now;
+int status;
+sbit P3_1=P3^1;
+sbit P3_0=P3^0;
+
+void per_second(){
+	int tmp=0;
+	int i;
+	for (i=1;i<=30000;i++){
+		tmp++;
+	}
+}
+
+void init(){
+	P2=255;
+	now=0;
+	status=0;
+}
+
+int main(){
+	init();
+	while (1){
+		if (P3_0==0){
+			status=0;
+			P2=255;
+			now=0;
+		}
+		if (P3_1==0){
+			status=1;
+			P2=255;
+			now=0;
+		}
+		if (status==0){
+			P2 = 255 - (1 << now);
+			now = (now+1)%8;
+		}else{
+			P2 = 255 - (1 << (now*2+1));
+			P2 = P2 - (1 << (now*2));
+			now = (now+1)%4;
+		}
+		per_second();	
+	}
+	return 0;
+}
