@@ -1,0 +1,130 @@
+#include <reg52.h>			 
+
+typedef unsigned int u16;	  
+typedef unsigned char u8;
+
+sbit LSA=P2^2;
+sbit LSB=P2^3;
+sbit LSC=P2^4;
+sbit k1=P3^1;	
+sbit k4=P3^3;  
+sbit  led=P2^0;
+
+static u16 count;
+static u16 count1;
+int h;
+u16 temp;
+u16 temp1;
+u8 code smgduan[10]={0x3f,0x06,0x5b,0x4f,0x66,0x6d,0x7d,0x07,0x7f,0x6f};
+u8 DisplayData[8];
+
+ 
+void delay(u16 i) {
+	while(i--);	
+}
+
+void DigDisplay() {
+	u8 i;
+	temp=count;
+  	temp1=count1;
+  	DisplayData[3] = smgduan[temp1 % 10000 / 1000];
+	DisplayData[2] = smgduan[temp1 % 1000 / 100];
+	DisplayData[1] = smgduan[temp1 % 100 / 10];
+	DisplayData[0] = smgduan[temp1 % 10];
+	DisplayData[7] = smgduan[temp % 10000 / 1000];
+	DisplayData[6] = smgduan[temp % 1000 / 100];
+	DisplayData[5] = smgduan[temp % 100 / 10];
+	DisplayData[4] = smgduan[temp % 10];
+	for(i=0;i<8;i++) {
+		switch(i) {
+			case(0):
+				LSA=0;LSB=0;LSC=0; break;
+			case(1):
+				LSA=1;LSB=0;LSC=0; break;
+			case(2):
+				LSA=0;LSB=1;LSC=0; break;
+			case(3):
+				LSA=1;LSB=1;LSC=0; break;
+			case(4):
+				LSA=0;LSB=0;LSC=1; break;
+			case(5):
+				LSA=1;LSB=0;LSC=1; break;
+			case(6):
+				LSA=0;LSB=1;LSC=1; break;
+			case(7):
+				LSA=1;LSB=1;LSC=1; break;	
+		}		
+		P0=DisplayData[i];
+		delay(100); 
+		P0=0x00;
+	}
+}
+
+void keypros() {
+	if(k1==0) {	
+		delay(1000);   
+		if(k1==0) {
+			count=0;	  	
+		}
+		while(!k1);	
+	}		
+}
+
+void Timer0Init() {
+	TMOD|=0X01;
+	TH0=0X3C;	
+	TL0=0XB0;	
+	ET0=1;
+	EA=1;
+	TR0=1;
+		
+}
+
+
+void Timer1Init() {
+	TMOD|=0X40;
+ 	TH1=0X00 ;	
+ 	TL1=0X00;	
+	ET1=1;
+	EA=1;
+	TR1=1;	
+}
+
+
+void Int1Init() {
+	IT1=1;
+	EX1=1;
+	EA=1;
+}
+
+void Timer0() interrupt 1 {
+	static u16 j;
+	TH0=0X3C;
+	TL0=0XB0;
+	j++;
+	if(j==10){
+		j=0;
+		count++;
+	}	
+}
+
+void Int1() interrupt 2 {
+	delay(1000);	
+	if(k4==0){
+		count1++;
+		led=~led;
+	}	
+}
+
+void main()
+{	
+	Timer0Init(); 
+	Timer1Init();
+	Int1Init();  
+	while(1)
+	{
+	 	DigDisplay(); 
+		keypros(); 
+			
+	};			
+}
